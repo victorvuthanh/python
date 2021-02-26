@@ -26,5 +26,5 @@ while daily_run < b:
     day_of_achievement += 1
     daily_run = daily_run + 0.1 * daily_run
 
-print(f"Ваш желаемый результат будет на %.d день" % day_of_achievement)
+print(f"Ваш желаемый результат будет на %.d-й день" % day_of_achievement)
 print('\nКонец программы')
