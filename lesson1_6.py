@@ -16,15 +16,15 @@
 # 6-й день: 3,22
 # Ответ: на 6-й день спортсмен достиг результата — не менее 3 км.
 
-a = int(input("Введите результаты пробежки первого дня в км "))
-b = int(input("Введите общий желаемый результат в км "))
-result_days = 1
-result_km = a
+a = int(input("Введите результаты вашей пробежки первого дня в км: "))
+b = int(input("Введите ваш желаемый результат в км: "))
+day_of_achievement = 1
+daily_run = a
 
-while result_km < b:
-    a = a + 0.1 * a
-    result_days += 1
-    result_km = result_km + a
+while daily_run < b:
+    print(f"{day_of_achievement}-й день: {daily_run:.2f}")
+    day_of_achievement += 1
+    daily_run = daily_run + 0.1 * daily_run
 
-print(f"Вы достигнете требуемых показателей на %.d день" % result_days)
+print(f"Ваш желаемый результат будет на %.d день" % day_of_achievement)
 print('\nКонец программы')
