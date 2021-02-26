@@ -8,4 +8,4 @@ minutes = (secs - hours * 3600) // 60
 seconds = secs - hours * 3600 - minutes * 60
 
 print(f'Ваше время в часы, минуты и секунды {hours}:{minutes}:{seconds}')
-print('Конец программы')
+print('\nКонец программы')
