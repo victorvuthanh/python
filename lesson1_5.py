@@ -7,7 +7,7 @@
 net_income = float(input("Введите выручку фирмы "))
 net_sales = float(input("Введите издержки фирмы "))
 if net_income > net_sales:
-    print(f"Фирма работает с прибылью. Рентабельность выручки составляет {net_income / net_sales*100:.0f}%")
+    print(f"Фирма работает с прибылью. Рентабельность выручки составляет {(net_income-net_sales) / net_sales*100:.0f}%")
     employees = int(input("Введите количество сотрудников фирмы "))
     print(f"Выручка в расчете на одного сотрудника составляет {net_income / employees:.0f} условных единиц")
 elif net_income == net_sales:
