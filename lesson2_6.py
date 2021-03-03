@@ -34,7 +34,7 @@ myshop = [(1, {'название': 'Ремень', 'цена': 40, "количе
             (2, {'название': 'Носки', 'цена': 5, "количество": 190, 'единица': 'шт.'}),
             (3, {'название': 'Шарф', 'цена': 10, "количество": 45, 'единица': 'шт.'})]
 print("\nИмеется магазин:")
-print("\n".join("{}\t{}".format(k, v) for k, v in myshop))
+print("\n".join("{}\t{}".format(key, value) for key, value in myshop))
 while True:
     myshop.append((
         order,
@@ -47,7 +47,7 @@ while True:
     ))
     order += 1
 
-    print("\n".join("{}\t{}".format(k, v) for k, v in myshop))
+    print("\n".join("{}\t{}".format(key, value) for key, value in myshop))
 
     q = input('Формирование списка завершено? (y/N)) ')
     if q.lower() == 'y' or q.lower() == 'н':
