@@ -30,13 +30,13 @@
 
 order = 4
 
-products = [(1, {'название': 'Ремень', 'цена': 40, "количество": 90, 'единица': 'шт.'}),
+myshop = [(1, {'название': 'Ремень', 'цена': 40, "количество": 90, 'единица': 'шт.'}),
             (2, {'название': 'Носки', 'цена': 5, "количество": 190, 'единица': 'шт.'}),
             (3, {'название': 'Шарф', 'цена': 10, "количество": 45, 'единица': 'шт.'})]
-
-print("\n".join("{}\t{}".format(k, v) for k, v in products))
+print("\nИмеется магазин:")
+print("\n".join("{}\t{}".format(k, v) for k, v in myshop))
 while True:
-    products.append((
+    myshop.append((
         order,
         {
             'название': input('Введите название товара: '),
@@ -47,7 +47,7 @@ while True:
     ))
     order += 1
 
-    print("\n".join("{}\t{}".format(key, v) for key, v in products))
+    print("\n".join("{}\t{}".format(k, v) for k, v in myshop))
 
     q = input('Формирование списка завершено? (y/N)) ')
     if q.lower() == 'y' or q.lower() == 'н':
@@ -60,7 +60,7 @@ analitics = {
     'единица': set()
 }
 
-for el, item in products:
+for el, item in myshop:
     analitics['название'].append(item['название'])
     analitics['цена'].append(item['цена'])
     analitics['количество'].append(item['количество'])
