@@ -9,10 +9,10 @@ def my_func(x, y):
 my_list = [el for el in range(100, 1001) if el % 2 == 0]
 
 print(f'Список четных значений от 100 до 1000:')
-print_table(my_list, 50, 4)
+print_table(my_list, 90, 4)
 
 result = str(reduce(my_func, my_list))
 print(f'Результат перемножения:')
-print_table(result, 150, 1)
+print_table(result, 302, 1)
 
 print('\nКонец программы')
