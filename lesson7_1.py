@@ -14,42 +14,57 @@
 первой матрицы складываем с первым элементом первой строки второй матрицы и т.д.
 '''
 
-from typing import List
-
+import random
 
 class Matrix:
-    def __init__(self, matrix_data: List[List]):
-        self.__matrix = matrix_data
 
-        m_rows = len(self.__matrix)
-        self.__matrix_size = frozenset([(m_rows, len(row)) for row in self.__matrix])
+    def __init__(self, m, n, init=True):
+        if init:
+            self.rows = [[0] * n for x in range(m)]
+        else:
+            self.rows = []
+        self.m = m
+        self.n = n
 
-        if len(self.__matrix_size) != 1:
-            raise ValueError("Invalid matrix size")
+    def __getitem__(self, idx):
+        return self.rows[idx]
 
-    def __add__(self, other: "Matrix") -> "Matrix":
-        if not isinstance(other, Matrix):
-            raise TypeError(f"'{other.__class__.__name__}' "
-                            f"incompatible object type")
-        if self.__matrix_size != other.__matrix_size:
-            raise ValueError(f"Matrix sizes difference")
+    def __setitem__(self, idx, item):
+        self.rows[idx] = item
 
-        result = []
+    def __str__(self):
+        s = '\n'.join([' '.join([str(item) for item in row]) for row in self.rows])
+        return s + '\n'
 
-        for item in zip(self.__matrix, other.__matrix):
-            result.append([sum([j, k]) for j, k in zip(*item)])
+    def getRank(self):
+        return (self.m, self.n)
 
-        return Matrix(result)
+    def __add__(self, mat):
 
-    def __str__(self) -> str:
-        return '\n'.join(['\t'.join(map(str, row)) for row in self.__matrix])
+        ret = Matrix(self.m, self.n)
+
+        for x in range(self.m):
+            row = [sum(item) for item in zip(self.rows[x], mat[x])]
+            ret[x] = row
+
+        return ret
+
+    @classmethod
+    def makeRandom(cls, m, n, low=0, high=10):
+
+        obj = Matrix(m, n, init=False)
+        for x in range(m):
+            obj.rows.append([random.randrange(low, high) for i in range(obj.n)])
+
+        return obj
 
 
-if __name__ == '__main__':
-    matrix1 = Matrix([[1, 2], [3, 4]])
-    print(matrix1, '\n')
+m = Matrix.makeRandom(3, 3)
+print(f'Первая матрица: \n{m}')
 
-    matrix2 = Matrix([[10, 20], [30, 40]])
-    print(matrix2, '\n')
+n = Matrix.makeRandom(3, 3)
+print(f'Вторая матрица: \n{n}')
 
-    print(matrix1 + matrix2)
+print(f'Сумма матрицы: \n{m + n}')
+
+print('Конец программы')
