@@ -36,9 +36,6 @@ class Matrix:
         s = '\n'.join([' '.join([str(item) for item in row]) for row in self.rows])
         return s + '\n'
 
-    def getRank(self):
-        return (self.m, self.n)
-
     def __add__(self, mat):
 
         ret = Matrix(self.m, self.n)
