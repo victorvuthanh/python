@@ -10,14 +10,6 @@ class Storage:
     def __init__(self):
         self._dict = {}
 
-    def add_to(self, equipment):
-        self._dict.setdefault(equipment.name, []).append(equipment)
-
-    def extract(self, name):
-        if self._dict[name]:
-            self._dict.setdefault(name).pop(0)
-
-
 class Equipment:
     def __init__(self, name, make, year):
         self.name = name
@@ -34,7 +26,7 @@ class Printer(Equipment):
         self.series = series
 
     def action(self):
-        return 'Печатает'
+        return print(f'{self.name} Печатает')
 
 
 class Scaner(Equipment):
@@ -42,7 +34,7 @@ class Scaner(Equipment):
         super().__init__(name, make, year)
 
     def action(self):
-        return 'Сканирует'
+        return print(f'{self.name} сканирует')
 
 
 class Xerox(Equipment):
@@ -50,25 +42,14 @@ class Xerox(Equipment):
         super().__init__(name, make, year)
 
     def action(self):
-        return 'Копирует'
+        return print(f'{self.name} копирует')
 
-
-storage = Storage()
-# создаем объект и добавляем
 scaner = Scaner('hp', '321', 90)
-storage.add_to(scaner)
 printer = Printer(123, 'Samsung', '344', 20 )
-storage.add_to(printer)
-scaner = Scaner('hp', '311', 97)
-storage.add_to(scaner)
+scaner1 = Scaner('hp', '311', 97)
 xerox = Xerox('Xerox', '444', 21)
-storage.add_to(xerox)
-scaner = Scaner('hp', '330', 99)
+scaner2 = Scaner('hp', '330', 99)
 
-storage.add_to(scaner)
-print(storage._dict)
-
-storage.extract('hp')
-print(storage._dict)
-
+printer.action()
+scaner.action()
 xerox.action()
